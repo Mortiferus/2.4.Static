@@ -108,21 +108,15 @@ public class StatsService {
     /* Месяц продажи минимум способ 2 */
     public static int salesMinimumMonthWay2() {
         int[] salesStats = salesStats();
-        int min = salesMinimum();
-        for (int i = salesStats.length - 1; i > 0; i--)
-            if (salesStats[i] == min)
-                return i + 1;
-        return 1;
-    }
-
-    /* Месяц продажи максимум способ 2 */
-    public static int salesMaximumMonthWay2() {
-        int[] salesStats = salesStats();
-        int max = salesMaximum();
-        for (int i = salesStats.length - 1; i > 0; i--)
-            if (salesStats[i] == max)
-                return i + 1;
-        return 1;
+        int min = salesStats[0];
+        int monthCounter = 0;
+        int month = 0;
+        for (int num : salesStats) {
+            monthCounter++;
+            if (min <= num) {
+                min = num;
+                month = monthCounter;
+            }
     }
 
     /* Месяц продажи максимум способ 3 */
